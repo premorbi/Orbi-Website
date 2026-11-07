@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
-import { BrandThemeGuide } from './components/BrandThemeGuide';
 import { Hero } from './components/Hero';
 import { HomeyFlowBuilder } from './components/HomeyFlowBuilder';
 import { CoreConceptAnimations } from './components/CoreConceptAnimations';
@@ -70,9 +69,6 @@ export default function App() {
         onToggleTheme={handleToggleTheme}
         onOpenBooking={() => handleOpenBooking()}
       />
-
-      {/* Brand Architecture & Color Palette Bar */}
-      <BrandThemeGuide />
 
       <main>
         {/* Hero Section with Interactive Living Suite & 12 Core Possibilities */}
