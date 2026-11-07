@@ -21,7 +21,7 @@ interface ExperienceCentreProps {
 export const ExperienceCentre: React.FC<ExperienceCentreProps> = ({
   initialConfigSummary,
 }) => {
-  const [showroomView, setShowroomView] = useState<'showroom' | 'catalog'>('showroom');
+  const [showroomView, setShowroomView] = useState<'flagship' | 'studio' | 'catalog'>('flagship');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -73,42 +73,63 @@ export const ExperienceCentre: React.FC<ExperienceCentreProps> = ({
           <div className="lg:col-span-5 space-y-6">
             {/* Experience Center Card */}
             <div className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#161D26] border border-[#DDD3C4] dark:border-[#283342] shadow-xl space-y-6">
-              {/* Real Experience Centre Photographic View with Web/Catalog Switcher */}
+              {/* Real Experience Centre Photographic View with Attached Flagship Studio Photo */}
               <div className="space-y-2">
-                <div className="relative h-48 rounded-xl overflow-hidden border border-[#E8DFD3] dark:border-[#2C3746] shadow-md group">
+                <div className="relative h-64 sm:h-72 rounded-xl overflow-hidden border border-[#E8DFD3] dark:border-[#2C3746] shadow-md group bg-[#EAE2D5] dark:bg-[#12171E]">
                   <img
                     src={
-                      showroomView === 'showroom'
+                      showroomView === 'flagship'
+                        ? '/assets/aistudio/WhatsApp_Image_2026-11-07_at_7.10.09_PM_0f87466f.jpeg'
+                        : showroomView === 'studio'
                         ? '/assets/web/experience_showroom.jpg'
                         : '/assets/catalog/page_17.png'
                     }
-                    alt="ORBi Experience Centre - Bengaluru"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt="ORBi Experience Centre - Bengaluru Flagship Studio"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-white text-xs">
-                    <span className="font-['Cinzel'] font-bold text-[#E2BE58]">
-                      {showroomView === 'showroom' ? 'Bengaluru Flagship Studio' : 'Catalog Page 17 Suite'}
-                    </span>
-                    <span className="text-[10px] font-['JetBrains_Mono'] bg-black/60 backdrop-blur-md px-2 py-0.5 rounded">
-                      Karnataka
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white text-xs">
+                    <div>
+                      <span className="font-['Cinzel'] font-bold text-[#E2BE58] block">
+                        {showroomView === 'flagship'
+                          ? 'Bengaluru Flagship Studio'
+                          : showroomView === 'studio'
+                          ? 'Living Showroom Lounge'
+                          : 'Catalog Page 17 Suite'}
+                      </span>
+                      <span className="text-[10px] text-slate-300">
+                        {showroomView === 'flagship' ? 'Curved Architectural Cove & Keypad Niches' : 'Live Automation Testing'}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-['JetBrains_Mono'] bg-black/60 backdrop-blur-md px-2 py-0.5 rounded shrink-0">
+                      Bengaluru
                     </span>
                   </div>
                 </div>
 
                 {/* View switcher buttons */}
-                <div className="flex items-center justify-between text-[11px] font-['JetBrains_Mono'] px-1">
-                  <span className="text-[#7C6C57] dark:text-[#9BA3AF]">Gallery View:</span>
+                <div className="flex items-center justify-between text-[11px] font-['JetBrains_Mono'] px-1 pt-1">
+                  <span className="text-[#7C6C57] dark:text-[#9BA3AF]">Studio View:</span>
                   <div className="flex items-center gap-1.5">
                     <button
-                      onClick={() => setShowroomView('showroom')}
+                      onClick={() => setShowroomView('flagship')}
                       className={`px-2.5 py-0.5 rounded transition-colors cursor-pointer ${
-                        showroomView === 'showroom'
+                        showroomView === 'flagship'
                           ? 'bg-[#C59B27] text-white font-bold'
                           : 'bg-[#F2ECE1] dark:bg-[#202936] text-[#635747] dark:text-[#CBD5E1] hover:text-[#1E2229]'
                       }`}
                     >
-                      Studio Interior
+                      Flagship Studio
+                    </button>
+                    <button
+                      onClick={() => setShowroomView('studio')}
+                      className={`px-2.5 py-0.5 rounded transition-colors cursor-pointer ${
+                        showroomView === 'studio'
+                          ? 'bg-[#C59B27] text-white font-bold'
+                          : 'bg-[#F2ECE1] dark:bg-[#202936] text-[#635747] dark:text-[#CBD5E1] hover:text-[#1E2229]'
+                      }`}
+                    >
+                      Showroom
                     </button>
                     <button
                       onClick={() => setShowroomView('catalog')}
@@ -118,24 +139,24 @@ export const ExperienceCentre: React.FC<ExperienceCentreProps> = ({
                           : 'bg-[#F2ECE1] dark:bg-[#202936] text-[#635747] dark:text-[#CBD5E1] hover:text-[#1E2229]'
                       }`}
                     >
-                      Catalog Page 17
+                      Catalog
                     </button>
                   </div>
                 </div>
               </div>
 
-              {/* Logo merged seamlessly with background, no white rectangle */}
-              <div className="flex items-center gap-3">
+              {/* Logo merged seamlessly with background, scaled up prominently */}
+              <div className="flex items-center gap-4">
                 <div className="shrink-0">
                   <img
                     src="/assets/aistudio/Orbi_Logo_Transparent.png"
                     alt="ORBi AUTOMATIFY"
-                    className="dark:hidden h-10 w-auto object-contain"
+                    className="dark:hidden h-14 sm:h-16 md:h-18 w-auto object-contain"
                   />
                   <img
                     src="/assets/aistudio/Orbi_Logo_Transparent_Dark.png"
                     alt="ORBi AUTOMATIFY"
-                    className="hidden dark:block h-10 w-auto object-contain drop-shadow-[0_2px_8px_rgba(197,155,39,0.25)]"
+                    className="hidden dark:block h-14 sm:h-16 md:h-18 w-auto object-contain drop-shadow-[0_2px_12px_rgba(197,155,39,0.35)]"
                   />
                 </div>
                 <div>

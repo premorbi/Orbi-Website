@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <img
                 src="/assets/aistudio/Orbi_Logo_Transparent_Dark.png"
                 alt="ORBi AUTOMATIFY - Engineered to UPSCALE"
-                className="h-11 sm:h-12 w-auto object-contain drop-shadow-[0_2px_10px_rgba(197,155,39,0.2)]"
+                className="h-16 sm:h-20 w-auto object-contain drop-shadow-[0_2px_16px_rgba(197,155,39,0.3)]"
               />
             </div>
 

@@ -35,23 +35,23 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 bg-[#FAF7F2]/90 dark:bg-[#11161B]/90 backdrop-blur-md border-b border-[#E8DFD3] dark:border-[#222B35] transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 sm:h-28 flex items-center justify-between gap-8">
         {/* Zone 1: Single element brand wordmark with real logo merged seamlessly into background */}
         <button
           onClick={() => handleNavClick('overview')}
-          className="flex items-center text-left group whitespace-nowrap shrink-0 cursor-pointer"
+          className="flex items-center text-left group whitespace-nowrap shrink-0 cursor-pointer py-1.5"
           title="ORBi AUTOMATIFY - Engineered to UPSCALE"
         >
-          {/* Transparent Logo - Merged with background, no white bounding box */}
+          {/* Transparent Logo - Substantially enlarged for bold luxury brand presence */}
           <img
             src="/assets/aistudio/Orbi_Logo_Transparent.png"
             alt="ORBi AUTOMATIFY - Engineered to UPSCALE"
-            className="dark:hidden h-10 sm:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            className="dark:hidden h-14 sm:h-18 md:h-20 lg:h-22 max-h-[88px] w-auto object-contain transition-transform duration-200 group-hover:scale-105"
           />
           <img
             src="/assets/aistudio/Orbi_Logo_Transparent_Dark.png"
             alt="ORBi AUTOMATIFY - Engineered to UPSCALE"
-            className="hidden dark:block h-10 sm:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-[0_2px_10px_rgba(197,155,39,0.25)]"
+            className="hidden dark:block h-14 sm:h-18 md:h-20 lg:h-22 max-h-[88px] w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(197,155,39,0.35)]"
           />
         </button>
 

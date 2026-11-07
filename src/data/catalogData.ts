@@ -26,8 +26,8 @@ export const BRAND_INFO = {
     {
       name: 'Manu Sharath',
       role: 'Head of Solutions & Architecture',
-      phone: '+91 91110 76861',
-      rawPhone: '+919111076861',
+      phone: '+91 91106 76861',
+      rawPhone: '+919110676861',
     },
   ],
 };
