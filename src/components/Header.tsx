@@ -35,23 +35,23 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 bg-[#FAF7F2]/90 dark:bg-[#11161B]/90 backdrop-blur-md border-b border-[#E8DFD3] dark:border-[#222B35] transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 sm:h-28 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 sm:h-28 flex items-center justify-between gap-2 sm:gap-8">
         {/* Zone 1: Single element brand wordmark with real logo merged seamlessly into background */}
         <button
           onClick={() => handleNavClick('overview')}
-          className="flex items-center text-left group whitespace-nowrap shrink-0 cursor-pointer py-1.5"
+          className="flex items-center text-left group whitespace-nowrap shrink-0 cursor-pointer py-1"
           title="ORBi AUTOMATIFY - Engineered to UPSCALE"
         >
-          {/* Transparent Logo - Substantially enlarged for bold luxury brand presence */}
+          {/* Transparent Logo - Responsive sizing for mobile and desktop */}
           <img
             src="/assets/aistudio/Orbi_Logo_Transparent.png"
             alt="ORBi AUTOMATIFY - Engineered to UPSCALE"
-            className="dark:hidden h-14 sm:h-18 md:h-20 lg:h-22 max-h-[88px] w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+            className="dark:hidden h-11 sm:h-18 md:h-20 lg:h-22 max-h-[88px] w-auto object-contain transition-transform duration-200 group-hover:scale-105"
           />
           <img
             src="/assets/aistudio/Orbi_Logo_Transparent_Dark.png"
             alt="ORBi AUTOMATIFY - Engineered to UPSCALE"
-            className="hidden dark:block h-14 sm:h-18 md:h-20 lg:h-22 max-h-[88px] w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(197,155,39,0.35)]"
+            className="hidden dark:block h-11 sm:h-18 md:h-20 lg:h-22 max-h-[88px] w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(197,155,39,0.35)]"
           />
         </button>
 
@@ -76,31 +76,32 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Zone 3: 1 primary action + theme toggle */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* Dual Theme Switcher */}
           <button
             onClick={onToggleTheme}
             aria-label="Toggle visual theme"
-            className="w-9 h-9 rounded-full flex items-center justify-center text-[#635747] dark:text-[#D1D5DB] hover:text-[#C59B27] hover:bg-[#EFE8DD] dark:hover:bg-[#1E2630] border border-[#E4DACD] dark:border-[#2C3744] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-[#635747] dark:text-[#D1D5DB] hover:text-[#C59B27] hover:bg-[#EFE8DD] dark:hover:bg-[#1E2630] border border-[#E4DACD] dark:border-[#2C3744] transition-colors cursor-pointer"
             title={isDark ? 'Switch to Warm Travertine Day Theme' : 'Switch to Obsidian Night Theme'}
           >
-            {isDark ? <Sun className="w-4 h-4 text-[#E2BE58]" /> : <Moon className="w-4 h-4" />}
+            {isDark ? <Sun className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E2BE58]" /> : <Moon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
           </button>
 
-          {/* Primary Action Button */}
+          {/* Primary Action Button - Always visible on mobile, tablet & desktop */}
           <button
             onClick={onOpenBooking}
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold tracking-wider uppercase text-white bg-gradient-to-r from-[#16202C] via-[#1F2E40] to-[#0F4C81] hover:from-[#C59B27] hover:to-[#9E7A17] rounded-lg shadow-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-5 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#16202C] via-[#1F2E40] to-[#0F4C81] hover:from-[#C59B27] hover:to-[#9E7A17] rounded-lg shadow-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer"
+            title="Book VIP Walkthrough at Bengaluru Experience Centre"
           >
             <span>Book VIP Visit</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           </button>
 
           {/* Mobile hamburger button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation drawer"
-            className="lg:hidden p-2 rounded-lg text-[#1E2229] dark:text-white hover:bg-[#EFE8DD] dark:hover:bg-[#1F2733] border border-[#E4DACD] dark:border-[#2B3542] cursor-pointer"
+            className="lg:hidden p-1.5 sm:p-2 rounded-lg text-[#1E2229] dark:text-white hover:bg-[#EFE8DD] dark:hover:bg-[#1F2733] border border-[#E4DACD] dark:border-[#2B3542] cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -129,9 +130,9 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full flex items-center justify-center gap-2 py-3 text-xs font-semibold uppercase tracking-wider text-white bg-gradient-to-r from-[#C59B27] to-[#9E7A17] rounded-lg shadow"
+              className="w-full flex items-center justify-center gap-2 py-3 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-[#16202C] via-[#0F4C81] to-[#C59B27] rounded-lg shadow"
             >
-              <span>Schedule Experience Centre Visit</span>
+              <span>Book VIP Visit</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

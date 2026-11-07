@@ -22,13 +22,21 @@ export const BRAND_INFO = {
       role: 'Director of Automation & Systems',
       phone: '+91 78925 51533',
       rawPhone: '+917892551533',
+      email: 'abdul@orbiautomatify.com',
     },
     {
       name: 'Manu Sharath',
       role: 'Head of Solutions & Architecture',
       phone: '+91 91106 76861',
       rawPhone: '+919110676861',
+      email: 'manusharath@orbiautomatify.com',
     },
+  ],
+  engineeringEmail: 'orbi.engineering@orbiautomatify.com',
+  notificationRecipients: [
+    'abdul@orbiautomatify.com',
+    'orbi.engineering@orbiautomatify.com',
+    'manusharath@orbiautomatify.com',
   ],
 };
 

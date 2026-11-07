@@ -10,9 +10,11 @@ import { ScenesSection } from './components/ScenesSection';
 import { ConfiguratorSection } from './components/ConfiguratorSection';
 import { ExperienceCentre } from './components/ExperienceCentre';
 import { Footer } from './components/Footer';
+import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 
 export default function App() {
   const [currentSection, setCurrentSection] = useState<string>('overview');
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('orbi-theme');
@@ -100,11 +102,23 @@ export default function App() {
         <ConfiguratorSection onScheduleVisit={(summary) => handleOpenBooking(summary)} />
 
         {/* Bengaluru Experience Centre & VIP Booking */}
-        <ExperienceCentre initialConfigSummary={bookingConfigSummary} />
+        <ExperienceCentre
+          initialConfigSummary={bookingConfigSummary}
+          onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
+        />
       </main>
 
       {/* Quiet, verified Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <Footer
+        onNavigate={handleNavigate}
+        onOpenPrivacyPolicy={() => setIsPrivacyModalOpen(true)}
+      />
+
+      {/* Comprehensive Privacy Policy & Homeowner Data Charter Modal */}
+      <PrivacyPolicyModal
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
+      />
     </div>
   );
 }

@@ -4,9 +4,10 @@ import { BRAND_INFO } from '../data/catalogData';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
+  onOpenPrivacyPolicy: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPrivacyPolicy }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -51,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               Navigation
             </span>
             <ul className="space-y-2 text-xs">
-              {['overview', 'automation-flow', 'connectivity-map', 'ecosystem', 'catalog', 'scenes'].map(
+              {['overview', 'automation-flow', 'connectivity-map', 'ecosystem', 'catalog', 'scenes', 'experience-centre'].map(
                 (item) => (
                   <li key={item}>
                     <button
@@ -63,6 +64,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   </li>
                 )
               )}
+              <li>
+                <button
+                  onClick={onOpenPrivacyPolicy}
+                  className="text-[#E2BE58] hover:text-[#C59B27] transition-colors cursor-pointer font-medium"
+                >
+                  Privacy Policy
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -87,18 +96,35 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <span className="text-xs font-bold uppercase tracking-widest text-[#E2BE58] font-['JetBrains_Mono'] block">
               Direct Inquiries
             </span>
-            <div className="space-y-2 text-xs">
+            <div className="space-y-3 text-xs">
               {BRAND_INFO.contacts.map((contact, idx) => (
-                <div key={idx} className="space-y-0.5">
+                <div key={idx} className="space-y-1">
                   <span className="text-white font-medium block">{contact.name}</span>
-                  <a
-                    href={`tel:${contact.rawPhone}`}
-                    className="text-[#9CA3AF] hover:text-[#C59B27] font-['JetBrains_Mono'] transition-colors block"
-                  >
-                    {contact.phone}
-                  </a>
+                  <div className="space-y-0.5">
+                    <a
+                      href={`tel:${contact.rawPhone}`}
+                      className="text-[#9CA3AF] hover:text-[#C59B27] font-['JetBrains_Mono'] transition-colors block text-[11px]"
+                    >
+                      {contact.phone}
+                    </a>
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="text-[#E2BE58]/90 hover:text-[#E2BE58] font-['JetBrains_Mono'] transition-colors block text-[11px] truncate"
+                    >
+                      {contact.email}
+                    </a>
+                  </div>
                 </div>
               ))}
+              <div className="pt-1 border-t border-[#222B35]">
+                <span className="text-[10px] text-[#9CA3AF] block font-['JetBrains_Mono'] uppercase">Engineering Desk</span>
+                <a
+                  href={`mailto:${BRAND_INFO.engineeringEmail}`}
+                  className="text-[#38BDF8] hover:text-[#7DD3FC] font-['JetBrains_Mono'] transition-colors block text-[11px] truncate"
+                >
+                  {BRAND_INFO.engineeringEmail}
+                </a>
+              </div>
             </div>
 
             <div className="pt-2">
@@ -117,8 +143,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B7280]">
-          <div>
-            © {new Date().getFullYear()} ORBi AUTOMATIFY. All rights reserved. Engineered to UPSCALE.
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>© {new Date().getFullYear()} ORBi AUTOMATIFY. All rights reserved. Engineered to UPSCALE.</span>
+            <span className="text-[#374151]">·</span>
+            <button
+              onClick={onOpenPrivacyPolicy}
+              className="text-[#9CA3AF] hover:text-[#C59B27] transition-colors underline-offset-4 hover:underline cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+            <span className="text-[#374151]">·</span>
+            <span className="text-[#9CA3AF]">Bengaluru, Karnataka</span>
           </div>
 
           <button
