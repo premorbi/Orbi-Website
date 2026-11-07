@@ -1,0 +1,7 @@
+{
+  "name": "ORBi AUTOMATIFY - Complete Home Automation",
+  "description": "Luxury home automation website for ORBi AUTOMATIFY featuring Homey-style automation flow animations, interactive SVG device connectivity networks, and complete product catalog.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
