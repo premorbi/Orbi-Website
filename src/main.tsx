@@ -1,5 +1,13 @@
-import {createRoot} from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(<App />);
+const container = document.getElementById('root')!;
+
+// The production build pre-renders the app into #root, so hydrate that markup.
+// In dev (#root is empty) fall back to a normal client render.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, <App />);
+} else {
+  createRoot(container).render(<App />);
+}

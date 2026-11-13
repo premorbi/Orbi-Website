@@ -15,19 +15,28 @@ import { PrivacyPolicyModal } from './components/PrivacyPolicyModal';
 export default function App() {
   const [currentSection, setCurrentSection] = useState<string>('overview');
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState<boolean>(false);
-  const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('orbi-theme');
-      if (saved) return saved === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  });
+  // Start as light so the pre-rendered HTML and the first client render match
+  // (avoids a hydration mismatch). The real preference is read after mount; an
+  // inline script in index.html applies the `dark` class before first paint.
+  const [isDark, setIsDark] = useState<boolean>(false);
+  const [themeLoaded, setThemeLoaded] = useState<boolean>(false);
 
   const [bookingConfigSummary, setBookingConfigSummary] = useState<string>('');
 
+  useEffect(() => {
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem('orbi-theme');
+    } catch {
+      // Storage unavailable (private mode, blocked cookies)
+    }
+    setIsDark(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+    setThemeLoaded(true);
+  }, []);
+
   // Sync theme to document.documentElement
   useEffect(() => {
+    if (!themeLoaded) return;
     const root = document.documentElement;
     if (isDark) {
       root.classList.add('dark');
@@ -36,7 +45,7 @@ export default function App() {
       root.classList.remove('dark');
       localStorage.setItem('orbi-theme', 'light');
     }
-  }, [isDark]);
+  }, [isDark, themeLoaded]);
 
   const handleToggleTheme = () => {
     setIsDark((prev) => !prev);
